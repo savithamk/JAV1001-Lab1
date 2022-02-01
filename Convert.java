@@ -8,7 +8,8 @@ import java.util.*;
 import java.text.DecimalFormat;
 
 public class Convert {
-    private static final DecimalFormat df = new DecimalFormat("0.00");
+    private static final DecimalFormat df = new DecimalFormat("0.00"); // This is used for rounding off
+    //Constants for identifying unit of measurement 
     private static final String KILOMETER = "km";
     private static final String MILE = "mi";
     private static final String CENTIMETER = "cm";
@@ -28,11 +29,12 @@ public class Convert {
         String currentUnitOfMeasure = "";
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter a value to convert: ");
-        String[] userInput = sc.nextLine().split(" ");
+        String[] userInput = sc.nextLine().split(" "); //Takes the user input separated by single space. Example "10 kg"
         try {
             if(userInput.length > 0) {
                 valueToConvert = Double.parseDouble(userInput[0]);
                 currentUnitOfMeasure = userInput[1];
+                //Conversion logic begins
                 switch (currentUnitOfMeasure.toLowerCase()) {
                     case KILOMETER:
                         System.out.println(valueToConvert + " " + currentUnitOfMeasure + " is equal to " + df.format(valueToConvert * 0.62) + MILE);
@@ -74,8 +76,9 @@ public class Convert {
                         break;
                     default:
                         System.out.println("No match");
-                        break;
+                        break;   
                 }
+                // End of conversion logic
             } else{
                 System.out.println("Invalid input");
             }
